@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Evoastra Ventures Progressive Industrial Analytics to AI/ML Capstone Program – End-to-End Supply Chain Optimization & Risk Forecasting">
+<meta name="keywords" content="Evoastra Ventures, Data Analytics, Data Science, AI, Machine Learning, Supply Chain Optimization, Capstone Project, Risk Forecasting">
+<meta name="author" content="Evoastra Ventures (OPC) Pvt Ltd">
+<meta name="robots" content="index, follow">
+<title>Evoastra Ventures | Progressive Industrial Analytics to AI/ML Capstone Program</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===== CSS RESET & BASE ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--navy:#0B1F3A;--blue:#0066FF;--teal:#00C2A8;--white:#FFFFFF;--light-gray:#F4F6F9;
+--dark-gray:#2C3E50;--mid-gray:#7F8C8D;--card-shadow:0 8px 32px rgba(11,31,58,0.10);
+--card-hover-shadow:0 12px 48px rgba(0,102,255,0.15);--radius:16px;--transition:all 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Inter',sans-serif;background:var(--light-gray);color:var(--dark-gray);line-height:1.7;overflow-x:hidden}
+h1,h2,h3,h4,h5,h6{font-family:'Poppins',sans-serif;color:var(--navy);line-height:1.3}
+a{text-decoration:none;color:var(--blue);transition:var(--transition)}
+a:hover{color:var(--teal)}
+img{max-width:100%;height:auto}
+
+/* ===== STICKY NAVIGATION ===== */
+.navbar{position:fixed;top:0;left:0;width:100%;background:rgba(11,31,58,0.97);backdrop-filter:blur(20px);z-index:1000;padding:0 2rem;transition:var(--transition);border-bottom:1px solid rgba(0,102,255,0.15)}
+.navbar.scrolled{padding:0 2rem;box-shadow:0 4px 30px rgba(0,0,0,0.2)}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:70px}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-logo-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--blue),var(--teal));border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:18px;font-family:'Poppins',sans-serif}
+.nav-logo span{color:var(--white);font-family:'Poppins',sans-serif;font-weight:700;font-size:1.1rem}
+.nav-logo small{color:var(--teal);font-size:0.65rem;display:block;font-weight:400;letter-spacing:1px;text-transform:uppercase}
+.nav-links{display:flex;gap:8px;align-items:center}
+.nav-links a{color:rgba(255,255,255,0.8);font-size:0.85rem;padding:8px 16px;border-radius:8px;transition:var(--transition);font-weight:500}
+.nav-links a:hover,.nav-links a.active{color:var(--white);background:rgba(0,102,255,0.2)}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
+.nav-toggle span{width:24px;height:2px;background:white;transition:var(--transition)}
+@media(max-width:900px){
+.nav-links{display:none;position:absolute;top:70px;left:0;width:100%;background:rgba(11,31,58,0.98);flex-direction:column;padding:1rem;border-top:1px solid rgba(0,102,255,0.2)}
+.nav-links.open{display:flex}
+.nav-toggle{display:flex}
+}
+
+/* ===== HERO SECTION ===== */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0B1F3A 0%,#0D2B4F 40%,#0B1F3A 100%);position:relative;overflow:hidden;padding:120px 2rem 80px}
+.hero::before{content:'';position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(0,102,255,0.12),transparent 70%);top:-100px;right:-100px;border-radius:50%;animation:pulse 6s ease-in-out infinite}
+.hero::after{content:'';position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(0,194,168,0.08),transparent 70%);bottom:-50px;left:-50px;border-radius:50%;animation:pulse 8s ease-in-out infinite reverse}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:0.5}50%{transform:scale(1.2);opacity:1}}
+.hero-content{max-width:900px;text-align:center;position:relative;z-index:2}
+.hero-badge{display:inline-block;background:linear-gradient(135deg,rgba(0,102,255,0.2),rgba(0,194,168,0.2));border:1px solid rgba(0,102,255,0.3);padding:8px 24px;border-radius:50px;color:var(--teal);font-size:0.8rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:1.5rem;animation:fadeInDown 0.8s ease}
+.hero h1{font-size:clamp(2rem,5vw,3.5rem);color:var(--white);font-weight:800;margin-bottom:1rem;animation:fadeInUp 0.8s ease 0.2s both}
+.hero h1 .gradient-text{background:linear-gradient(135deg,var(--blue),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p.tagline{color:rgba(255,255,255,0.7);font-size:1.1rem;max-width:700px;margin:0 auto 2rem;animation:fadeInUp 0.8s ease 0.4s both}
+.hero-company{color:rgba(255,255,255,0.5);font-size:0.85rem;margin-top:2rem;animation:fadeInUp 0.8s ease 0.6s both}
+.hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:2rem;animation:fadeInUp 0.8s ease 0.5s both}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:12px;font-weight:600;font-size:0.95rem;border:none;cursor:pointer;transition:var(--transition);font-family:'Inter',sans-serif}
+.btn-primary{background:linear-gradient(135deg,var(--blue),#0052CC);color:white;box-shadow:0 4px 20px rgba(0,102,255,0.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,102,255,0.4);color:white}
+.btn-outline{background:transparent;color:var(--teal);border:2px solid rgba(0,194,168,0.4)}
+.btn-outline:hover{background:rgba(0,194,168,0.1);border-color:var(--teal);color:var(--teal);transform:translateY(-2px)}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeInDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.scroll-reveal{opacity:0;transform:translateY(40px);transition:opacity 0.7s ease,transform 0.7s ease}
+.scroll-reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ===== SECTION STYLES ===== */
+section{padding:80px 2rem}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-label{display:inline-block;background:linear-gradient(135deg,rgba(0,102,255,0.1),rgba(0,194,168,0.1));border:1px solid rgba(0,102,255,0.15);padding:6px 20px;border-radius:50px;color:var(--blue);font-size:0.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:1rem}
+.section-title{font-size:clamp(1.8rem,3vw,2.5rem);margin-bottom:0.75rem}
+.section-subtitle{color:var(--mid-gray);font-size:1.05rem;max-width:700px;margin-bottom:3rem}
+
+/* ===== PROGRESS TRACKER ===== */
+.progress-tracker{background:var(--white);border-radius:var(--radius);padding:2.5rem;box-shadow:var(--card-shadow);margin-bottom:3rem}
+.progress-bar-container{display:flex;align-items:center;gap:0;position:relative;margin:2rem 0 1rem}
+.progress-step{flex:1;text-align:center;position:relative;z-index:2}
+.progress-step .step-circle{width:52px;height:52px;border-radius:50%;background:var(--light-gray);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-weight:700;font-size:1.1rem;color:var(--mid-gray);transition:var(--transition);border:3px solid transparent}
+.progress-step.active .step-circle{background:linear-gradient(135deg,var(--blue),var(--teal));color:white;box-shadow:0 4px 20px rgba(0,102,255,0.3);border-color:transparent}
+.progress-step.completed .step-circle{background:var(--teal);color:white;border-color:transparent}
+.progress-step .step-label{font-size:0.8rem;font-weight:600;color:var(--mid-gray);transition:var(--transition)}
+.progress-step.active .step-label,.progress-step.completed .step-label{color:var(--navy)}
+.progress-line{position:absolute;top:26px;left:10%;right:10%;height:4px;background:var(--light-gray);border-radius:2px;z-index:1}
+.progress-line-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--blue));border-radius:2px;transition:width 0.8s cubic-bezier(0.4,0,0.2,1);width:0%}
+.skill-meter{margin-top:1.5rem}
+.skill-meter-label{display:flex;justify-content:space-between;font-size:0.8rem;font-weight:600;color:var(--mid-gray);margin-bottom:8px}
+.skill-meter-bar{height:12px;background:var(--light-gray);border-radius:6px;overflow:hidden}
+.skill-meter-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--blue),var(--teal),#00E5A0);transition:width 1.5s cubic-bezier(0.4,0,0.2,1);width:0%}
+
+/* ===== PHASE CARDS ===== */
+.phase-section{margin-bottom:3rem}
+.phase-header{display:flex;align-items:center;gap:16px;margin-bottom:2rem;cursor:pointer;padding:1.5rem 2rem;background:var(--white);border-radius:var(--radius);box-shadow:var(--card-shadow);transition:var(--transition)}
+.phase-header:hover{box-shadow:var(--card-hover-shadow);transform:translateY(-2px)}
+.phase-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:800;color:white;flex-shrink:0}
+.phase-1 .phase-icon{background:linear-gradient(135deg,#0066FF,#0052CC)}
+.phase-2 .phase-icon{background:linear-gradient(135deg,#00C2A8,#00A896)}
+.phase-3 .phase-icon{background:linear-gradient(135deg,#FF4757,#FF6B81)}
+.phase-header h3{font-size:1.3rem;margin-bottom:2px}
+.phase-header .phase-tag{font-size:0.75rem;color:var(--mid-gray);font-weight:500}
+.phase-expand{margin-left:auto;width:36px;height:36px;border-radius:50%;background:var(--light-gray);display:flex;align-items:center;justify-content:center;transition:var(--transition);flex-shrink:0;font-size:1.2rem;color:var(--navy)}
+.phase-header.open .phase-expand{transform:rotate(180deg);background:var(--blue);color:white}
+.phase-content{max-height:0;overflow:hidden;transition:max-height 0.6s cubic-bezier(0.4,0,0.2,1);padding:0 1rem}
+.phase-content.open{max-height:3000px;padding:0 1rem 2rem}
+.phase-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;margin-top:1.5rem}
+
+/* ===== TASK CARDS ===== */
+.task-card{background:var(--white);border-radius:14px;padding:1.5rem;box-shadow:0 4px 16px rgba(11,31,58,0.06);border:1px solid rgba(0,0,0,0.04);transition:var(--transition);position:relative;overflow:hidden}
+.task-card:hover{box-shadow:var(--card-hover-shadow);transform:translateY(-3px)}
+.task-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;border-radius:4px 0 0 4px}
+.phase-1 .task-card::before{background:linear-gradient(180deg,var(--blue),#0052CC)}
+.phase-2 .task-card::before{background:linear-gradient(180deg,var(--teal),#00A896)}
+.phase-3 .task-card::before{background:linear-gradient(180deg,#FF4757,#FF6B81)}
+.task-card h4{font-size:1rem;margin-bottom:0.5rem;display:flex;align-items:center;gap:8px}
+.task-card p{font-size:0.88rem;color:var(--mid-gray);line-height:1.6}
+.task-card .task-tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.task-card .task-tools span{background:var(--light-gray);padding:4px 12px;border-radius:20px;font-size:0.72rem;font-weight:600;color:var(--navy)}
+
+/* ===== TOOLTIP ===== */
+.tooltip-trigger{position:relative;cursor:help;border-bottom:1px dashed var(--blue);color:var(--blue)}
+.tooltip-trigger .tooltip-text{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(5px);background:var(--navy);color:white;padding:10px 16px;border-radius:10px;font-size:0.8rem;white-space:nowrap;max-width:300px;white-space:normal;opacity:0;visibility:hidden;transition:var(--transition);z-index:100;box-shadow:0 8px 30px rgba(0,0,0,0.2);pointer-events:none}
+.tooltip-trigger .tooltip-text::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--navy)}
+.tooltip-trigger:hover .tooltip-text{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+
+/* ===== CHECKLIST ===== */
+.checklist{background:var(--white);border-radius:var(--radius);padding:2rem;box-shadow:var(--card-shadow);margin-top:2rem}
+.checklist h4{font-size:1.1rem;margin-bottom:1.2rem;display:flex;align-items:center;gap:10px}
+.checklist-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(0,0,0,0.05);cursor:pointer;transition:var(--transition)}
+.checklist-item:last-child{border-bottom:none}
+.checklist-item:hover{padding-left:8px}
+.check-box{width:24px;height:24px;border-radius:8px;border:2px solid #D1D5DB;display:flex;align-items:center;justify-content:center;transition:var(--transition);flex-shrink:0;font-size:0.8rem;color:transparent}
+.checklist-item.checked .check-box{background:var(--teal);border-color:var(--teal);color:white}
+.checklist-item.checked .check-label{text-decoration:line-through;color:var(--mid-gray)}
+.check-label{font-size:0.9rem;font-weight:500}
+.checklist-progress{margin-top:1rem;display:flex;align-items:center;gap:12px}
+.checklist-progress-bar{flex:1;height:8px;background:var(--light-gray);border-radius:4px;overflow:hidden}
+.checklist-progress-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--blue));border-radius:4px;transition:width 0.5s ease}
+.checklist-progress-text{font-size:0.8rem;font-weight:600;color:var(--navy);min-width:40px;text-align:right}
+
+/* ===== DATASET SECTION ===== */
+.dataset-card{background:var(--white);border-radius:var(--radius);padding:2rem;box-shadow:var(--card-shadow);margin-bottom:1.5rem;border:1px solid rgba(0,0,0,0.04);transition:var(--transition)}
+.dataset-card:hover{box-shadow:var(--card-hover-shadow)}
+.dataset-meta{display:flex;flex-wrap:wrap;gap:12px;margin:1rem 0}
+.dataset-meta span{background:var(--light-gray);padding:6px 14px;border-radius:8px;font-size:0.78rem;font-weight:600;color:var(--navy)}
+.dataset-buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:1.5rem;align-items:center}
+.dataset-btn{padding:10px 24px;border-radius:10px;font-weight:600;font-size:0.85rem;border:none;cursor:pointer;transition:var(--transition);display:inline-flex;align-items:center;gap:8px;font-family:'Inter',sans-serif}
+.dataset-btn.primary{background:linear-gradient(135deg,var(--blue),#0052CC);color:white;box-shadow:0 4px 16px rgba(0,102,255,0.2)}
+.dataset-btn.primary:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,102,255,0.35)}
+.dataset-btn.fallback{background:var(--light-gray);color:var(--navy)}
+.dataset-btn.fallback:hover{background:#E2E8F0;transform:translateY(-1px)}
+.link-status{width:10px;height:10px;border-radius:50%;display:inline-block;animation:blink 2s infinite}
+.link-status.live{background:#22C55E;box-shadow:0 0 8px rgba(34,197,94,0.4)}
+.link-status.dead{background:#EF4444;box-shadow:0 0 8px rgba(239,68,68,0.4)}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.5}}
+
+/* ===== MODAL ===== */
+.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(11,31,58,0.7);backdrop-filter:blur(8px);z-index:2000;display:none;align-items:center;justify-content:center;padding:2rem;opacity:0;transition:opacity 0.3s ease}
+.modal-overlay.open{display:flex;opacity:1}
+.modal{background:var(--white);border-radius:var(--radius);padding:2.5rem;max-width:650px;width:100%;max-height:80vh;overflow-y:auto;box-shadow:0 24px 80px rgba(0,0,0,0.3);transform:scale(0.9);transition:transform 0.3s ease}
+.modal-overlay.open .modal{transform:scale(1)}
+.modal h3{font-size:1.4rem;margin-bottom:1rem}
+.modal p{color:var(--mid-gray);line-height:1.8;margin-bottom:1rem;font-size:0.95rem}
+.modal-close{position:absolute;top:1.5rem;right:1.5rem;width:36px;height:36px;border-radius:50%;background:var(--light-gray);border:none;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:var(--transition)}
+.modal-close:hover{background:var(--navy);color:white}
+
+/* ===== ACCORDION FAQ ===== */
+.accordion{margin-top:2rem}
+.accordion-item{background:var(--white);border-radius:14px;margin-bottom:12px;box-shadow:0 2px 12px rgba(0,0,0,0.04);overflow:hidden;border:1px solid rgba(0,0,0,0.04)}
+.accordion-header{padding:1.2rem 1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-weight:600;font-size:0.95rem;transition:var(--transition)}
+.accordion-header:hover{background:rgba(0,102,255,0.03)}
+.accordion-icon{transition:transform 0.3s ease;font-size:1.1rem}
+.accordion-item.open .accordion-icon{transform:rotate(45deg)}
+.accordion-body{max-height:0;overflow:hidden;transition:max-height 0.4s ease;padding:0 1.5rem}
+.accordion-item.open .accordion-body{max-height:500px;padding:0 1.5rem 1.2rem}
+.accordion-body p{color:var(--mid-gray);font-size:0.9rem;line-height:1.7}
+
+/* ===== RUBRIC TABLE ===== */
+.rubric-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:14px;overflow:hidden;box-shadow:var(--card-shadow);margin-top:2rem;background:var(--white)}
+.rubric-table thead{background:linear-gradient(135deg,var(--navy),#132D52)}
+.rubric-table th{padding:16px 20px;color:white;font-weight:600;font-size:0.85rem;text-align:left;letter-spacing:0.5px}
+.rubric-table td{padding:14px 20px;font-size:0.88rem;border-bottom:1px solid rgba(0,0,0,0.05)}
+.rubric-table tbody tr:hover{background:rgba(0,102,255,0.03)}
+.rubric-table .weight-badge{background:linear-gradient(135deg,rgba(0,102,255,0.1),rgba(0,194,168,0.1));color:var(--blue);padding:4px 14px;border-radius:20px;font-weight:700;font-size:0.82rem;display:inline-block}
+
+/* ===== DEMAND SECTION ===== */
+.demand-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
+.demand-card{background:var(--white);border-radius:14px;padding:1.8rem;box-shadow:var(--card-shadow);transition:var(--transition);text-align:center;border:1px solid rgba(0,0,0,0.04)}
+.demand-card:hover{transform:translateY(-4px);box-shadow:var(--card-hover-shadow)}
+.demand-card .demand-icon{width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto 1rem;background:linear-gradient(135deg,rgba(0,102,255,0.1),rgba(0,194,168,0.1))}
+.demand-card h4{font-size:1rem;margin-bottom:0.5rem}
+.demand-card p{font-size:0.85rem;color:var(--mid-gray)}
+.salary-range{font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--blue),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:0.5rem 0}
+
+/* ===== DELIVERABLES ===== */
+.deliverable-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.deliverable-item{background:var(--white);border-radius:14px;padding:1.5rem;box-shadow:0 4px 16px rgba(11,31,58,0.06);border:1px solid rgba(0,0,0,0.04);transition:var(--transition)}
+.deliverable-item:hover{box-shadow:var(--card-hover-shadow);transform:translateY(-2px)}
+.deliverable-item h4{font-size:0.95rem;margin-bottom:0.5rem;display:flex;align-items:center;gap:8px}
+.deliverable-item p{font-size:0.83rem;color:var(--mid-gray)}
+.acceptance{margin-top:10px;padding:10px 14px;background:rgba(0,194,168,0.06);border-radius:10px;border-left:3px solid var(--teal)}
+.acceptance span{font-size:0.78rem;color:var(--navy);font-weight:600}
+
+/* ===== FOOTER ===== */
+.footer{background:var(--navy);color:rgba(255,255,255,0.7);padding:60px 2rem 30px;margin-top:40px}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:3rem}
+.footer-col h4{color:var(--white);font-size:1rem;margin-bottom:1rem;font-family:'Poppins',sans-serif}
+.footer-col p,.footer-col a{font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.8}
+.footer-col a:hover{color:var(--teal)}
+.footer-bottom{max-width:1200px;margin:2rem auto 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem}
+.footer-bottom p{font-size:0.8rem;color:rgba(255,255,255,0.4)}
+.footer-social{display:flex;gap:12px}
+.footer-social a{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);transition:var(--transition);font-size:0.85rem}
+.footer-social a:hover{background:var(--blue);color:white}
+
+/* ===== GITHUB STRUCTURE ===== */
+.github-tree{background:var(--navy);border-radius:14px;padding:2rem;color:rgba(255,255,255,0.85);font-family:'Courier New',monospace;font-size:0.85rem;line-height:2;overflow-x:auto;margin-top:1.5rem}
+.github-tree .folder{color:var(--teal)}
+.github-tree .file{color:rgba(255,255,255,0.6)}
+
+/* ===== ADVANCED FEATURES ===== */
+.advanced-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+section{padding:60px 1rem}
+.phase-grid{grid-template-columns:1fr}
+.demand-grid{grid-template-columns:1fr}
+.deliverable-grid{grid-template-columns:1fr}
+.footer-inner{grid-template-columns:1fr}
+.hero h1{font-size:2rem}
+.nav-inner{padding:0}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="navbar" role="navigation" aria-label="Primary Navigation">
+<div class="nav-inner">
+<a href="#" class="nav-logo" aria-label="Evoastra Ventures Home">
+<div class="nav-logo-icon">E</div>
+<span>Evoastra Ventures<small>Your Extended Partner in Excellence</small></span>
+</a>
+<div class="nav-links" id="navLinks">
+<a href="#overview" class="active">Overview</a>
+<a href="#phases">Phases</a>
+<a href="#datasets">Datasets</a>
+<a href="#demand">Industry Demand</a>
+<a href="#deliverables">Deliverables</a>
+<a href="#rubric">Rubric</a>
+<a href="#advanced">Advanced</a>
+<a href="#faq">FAQ</a>
+</div>
+<div class="nav-toggle" id="navToggle" aria-label="Toggle Menu" role="button" tabindex="0">
+<span></span><span></span><span></span>
+</div>
+</div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero" id="overview">
+<div class="hero-content">
+<div class="hero-badge">Capstone Program 2026</div>
+<h1>Progressive Industrial<br><span class="gradient-text">Analytics to AI/ML</span><br>Transformation Capstone</h1>
+<p class="tagline">An enterprise-grade, three-stage capstone simulating real consulting projects in End-to-End Supply Chain Optimization & Risk Forecasting — progressing from Data Analytics through Data Science to Artificial Intelligence.</p>
+<div class="hero-cta">
+<a href="#phases" class="btn btn-primary">Explore Phases ↓</a>
+<a href="#datasets" class="btn btn-outline">Access Datasets →</a>
+</div>
+<p class="hero-company">Commissioned by <strong style="color:var(--teal)">Evoastra Ventures (OPC) Pvt Ltd</strong><br>"Your Extended Partner in Advisory Research & Analytics Excellence"</p>
+</div>
+</header>
+
+<!-- ===== PROJECT OVERVIEW ===== -->
+<section id="project-overview" style="background:var(--white)">
+<div class="section-inner scroll-reveal">
+<span class="section-label">Project Brief</span>
+<h2 class="section-title">End-to-End Supply Chain Optimization & Risk Forecasting</h2>
+<p class="section-subtitle">A high-demand, enterprise-scale problem that mirrors the consulting and advisory work of leading analytics firms — built for progressive skill development.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem">
+<div class="task-card">
+<h4>🎯 Problem Statement</h4>
+<p>Design and deploy an intelligent supply chain analytics system capable of forecasting demand, identifying bottleneck risks, optimizing inventory allocation, and enabling real-time autonomous decision support — using datasets exceeding 100,000 records from global supply chain operations.</p>
+</div>
+<div class="task-card">
+<h4>🏢 Industry Context</h4>
+<p>AI-driven supply chain optimization delivers 23–31% cost reductions and 40% delivery reliability improvements. This capstone mirrors enterprise implementations where predictive analytics engines achieve 85–95% forecast accuracy, directly applicable to consulting, FMCG, manufacturing, and e-commerce.</p>
+</div>
+<div class="task-card">
+<h4>📈 Scalability Path</h4>
+<p>The project evolves from descriptive dashboards (Phase 1) to predictive statistical models (Phase 2) to production-grade ML systems with deployment architecture (Phase 3) — reflecting Evoastra's progressive transformation methodology.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== PROGRESS TRACKER ===== -->
+<section id="phases">
+<div class="section-inner scroll-reveal">
+<span class="section-label">Phase Progression</span>
+<h2 class="section-title">Progressive Transformation Tracker</h2>
+<p class="section-subtitle">Track your journey from foundational analytics to production-grade AI systems.</p>
+<div class="progress-tracker">
+<div class="progress-bar-container">
+<div class="progress-line"><div class="progress-line-fill" id="progressFill"></div></div>
+<div class="progress-step completed" data-phase="1">
+<div class="step-circle">1</div>
+<div class="step-label">Data Analytics</div>
+</div>
+<div class="progress-step active" data-phase="2">
+<div class="step-circle">2</div>
+<div class="step-label">Data Science</div>
+</div>
+<div class="progress-step" data-phase="3">
+<div class="step-circle">3</div>
+<div class="step-label">AI / ML</div>
+</div>
+</div>
+<div class="skill-meter">
+<div class="skill-meter-label"><span>Beginner</span><span>Intermediate</span><span>Advanced</span><span>Industrial</span></div>
+<div class="skill-meter-bar"><div class="skill-meter-fill" id="skillFill"></div></div>
+</div>
+</div>
+
+<!-- PHASE 1 -->
+<div class="phase-section phase-1">
+<div class="phase-header" onclick="togglePhase(this)" aria-expanded="false" role="button" tabindex="0">
+<div class="phase-icon">01</div>
+<div><h3>Phase 1 — Data Analytics (Descriptive & Diagnostic)</h3><span class="phase-tag">Beginner → Intermediate · Understand historical data and generate insights</span></div>
+<div class="phase-expand">▼</div>
+</div>
+<div class="phase-content">
+<p style="color:var(--mid-gray);margin-bottom:1rem;font-size:0.92rem"><strong>Objective:</strong> Ingest, clean, and explore large-scale supply chain datasets to uncover historical patterns, define KPIs, map business questions, and build interactive dashboards that surface actionable diagnostic insights.</p>
+<div class="phase-grid">
+<div class="task-card"><h4>🧹 Data Cleaning & Preparation</h4><p>Handle missing values, duplicates, outlier detection. Standardize date formats, categorical encoding, and schema alignment across 100K+ row datasets. Build a comprehensive data dictionary.</p><div class="task-tools"><span>Python</span><span>Pandas</span><span>NumPy</span><span>OpenRefine</span></div></div>
+<div class="task-card"><h4>📊 Exploratory Data Analysis</h4><p>Perform univariate, bivariate, and multivariate analysis. Identify distribution shapes, seasonal trends, and anomalous patterns across supply chain nodes including procurement, warehousing, and logistics.</p><div class="task-tools"><span>Matplotlib</span><span>Seaborn</span><span>Plotly</span></div></div>
+<div class="task-card"><h4>📈 KPI Framework & Business Mapping</h4><p>Define supply chain KPIs: Order Fulfillment Rate, Inventory Turnover, Lead Time Variability, Perfect Order Rate, and Cost-to-Serve. Map each to stakeholder business questions.</p><div class="task-tools"><span>Excel</span><span>Miro</span><span>Notion</span></div></div>
+<div class="task-card"><h4>🖥️ Dashboard Creation (v1)</h4><p>Build an interactive dashboard with drill-down capabilities. Visualize regional performance, supplier reliability scores, demand trend overlays, and inventory health heatmaps.</p><div class="task-tools"><span>Power BI</span><span>Tableau</span><span>Streamlit</span></div></div>
+<div class="task-card"><h4>🔍 Root Cause Analysis</h4><p>Apply Pareto analysis, fishbone diagrams, and correlation heatmaps to diagnose why certain supply chain nodes underperform. Identify top 5 cost drivers and risk factors.</p><div class="task-tools"><span>Python</span><span>Statistical Tests</span></div></div>
+<div class="task-card"><h4>📑 Insight Summary & Visual Report</h4><p>Produce a structured report with executive summary, key findings, visualizations, and data-backed recommendations for Phase 2 modeling priorities.</p><div class="task-tools"><span>Jupyter</span><span>Markdown</span><span>PDF Export</span></div></div>
+</div>
+<div class="checklist" data-phase="phase1">
+<h4>✅ Phase 1 Completion Checklist</h4>
+<div class="checklist-item" data-key="p1-clean"><div class="check-box">✓</div><span class="check-label">Data cleaning & missing value handling complete</span></div>
+<div class="checklist-item" data-key="p1-eda"><div class="check-box">✓</div><span class="check-label">Exploratory Data Analysis notebook finalized</span></div>
+<div class="checklist-item" data-key="p1-kpi"><div class="check-box">✓</div><span class="check-label">KPI framework & business question map documented</span></div>
+<div class="checklist-item" data-key="p1-dash"><div class="check-box">✓</div><span class="check-label">Interactive dashboard v1 deployed</span></div>
+<div class="checklist-item" data-key="p1-rca"><div class="check-box">✓</div><span class="check-label">Root cause analysis completed with visuals</span></div>
+<div class="checklist-item" data-key="p1-report"><div class="check-box">✓</div><span class="check-label">Insight summary & visual report submitted</span></div>
+<div class="checklist-item" data-key="p1-dict"><div class="check-box">✓</div><span class="check-label">Data dictionary finalized</span></div>
+<div class="checklist-progress"><div class="checklist-progress-bar"><div class="checklist-progress-fill" style="width:0%"></div></div><span class="checklist-progress-text">0%</span></div>
+</div>
+</div>
+</div>
+
+<!-- PHASE 2 -->
+<div class="phase-section phase-2">
+<div class="phase-header" onclick="togglePhase(this)" aria-expanded="false" role="button" tabindex="0">
+<div class="phase-icon">02</div>
+<div><h3>Phase 2 — Data Science (Predictive & Statistical Modeling)</h3><span class="phase-tag">Intermediate → Advanced · Move from insight to prediction</span></div>
+<div class="phase-expand">▼</div>
+</div>
+<div class="phase-content">
+<p style="color:var(--mid-gray);margin-bottom:1rem;font-size:0.92rem"><strong>Objective:</strong> Engineer predictive features, validate hypotheses with statistical rigor, build regression and time-series forecasting models, and quantify business risk through model-driven scenario analysis.</p>
+<div class="phase-grid">
+<div class="task-card"><h4>⚙️ Feature Engineering</h4><p>Create lag features, rolling averages, interaction terms, and domain-specific variables (e.g., supplier lead-time variance, seasonal demand indices). Apply dimensionality reduction where appropriate.</p><div class="task-tools"><span>Pandas</span><span>Scikit-learn</span><span>Feature-engine</span></div></div>
+<div class="task-card"><h4>📐 Statistical Testing & Hypothesis Validation</h4><p>Conduct <span class="tooltip-trigger">t-tests<span class="tooltip-text">Two-sample t-test compares means of two groups to determine if they are statistically different from each other.</span></span>, ANOVA, chi-squared tests, and Granger causality tests. Validate assumptions about supplier performance differences and seasonal demand shifts.</p><div class="task-tools"><span>SciPy</span><span>Statsmodels</span></div></div>
+<div class="task-card"><h4>📉 Regression & Forecasting Models</h4><p>Build Linear Regression, Ridge, Lasso, and <span class="tooltip-trigger">ARIMA/SARIMA<span class="tooltip-text">ARIMA (AutoRegressive Integrated Moving Average) models capture temporal dependencies. SARIMA adds seasonal components for periodic patterns.</span></span> time-series models for demand forecasting across product categories and regions.</p><div class="task-tools"><span>Scikit-learn</span><span>Statsmodels</span><span>Prophet</span></div></div>
+<div class="task-card"><h4>📊 Model Evaluation & Selection</h4><p>Evaluate using <span class="tooltip-trigger">RMSE, MAE, R², AUC<span class="tooltip-text">RMSE = Root Mean Squared Error, MAE = Mean Absolute Error, R² = Coefficient of Determination, AUC = Area Under the ROC Curve. These metrics quantify prediction accuracy.</span></span>. Compare models via cross-validation. Document model selection rationale with business-impact framing.</p><div class="task-tools"><span>Scikit-learn</span><span>Yellowbrick</span></div></div>
+<div class="task-card"><h4>🔬 Correlation & Feature Importance</h4><p>Compute Pearson, Spearman, and mutual information scores. Rank features by predictive power. Visualize feature importance for stakeholder communication.</p><div class="task-tools"><span>SHAP</span><span>Seaborn</span><span>Plotly</span></div></div>
+<div class="task-card"><h4>⚠️ Business Risk Assessment</h4><p>Translate model outputs into risk categories. Build scenario matrices for supply disruption (best/worst/likely). Quantify financial exposure for top-risk supplier nodes.</p><div class="task-tools"><span>Monte Carlo</span><span>Python</span><span>Excel</span></div></div>
+</div>
+<div class="checklist" data-phase="phase2">
+<h4>✅ Phase 2 Completion Checklist</h4>
+<div class="checklist-item" data-key="p2-feat"><div class="check-box">✓</div><span class="check-label">Feature engineering pipeline completed</span></div>
+<div class="checklist-item" data-key="p2-stat"><div class="check-box">✓</div><span class="check-label">Statistical tests & hypothesis validation documented</span></div>
+<div class="checklist-item" data-key="p2-model"><div class="check-box">✓</div><span class="check-label">Predictive models trained & evaluated</span></div>
+<div class="checklist-item" data-key="p2-ts"><div class="check-box">✓</div><span class="check-label">Time-series forecasting model finalized</span></div>
+<div class="checklist-item" data-key="p2-feat-imp"><div class="check-box">✓</div><span class="check-label">Feature importance analysis complete</span></div>
+<div class="checklist-item" data-key="p2-risk"><div class="check-box">✓</div><span class="check-label">Business risk assessment submitted</span></div>
+<div class="checklist-progress"><div class="checklist-progress-bar"><div class="checklist-progress-fill" style="width:0%"></div></div><span class="checklist-progress-text">0%</span></div>
+</div>
+</div>
+</div>
+
+<!-- PHASE 3 -->
+<div class="phase-section phase-3">
+<div class="phase-header" onclick="togglePhase(this)" aria-expanded="false" role="button" tabindex="0">
+<div class="phase-icon">03</div>
+<div><h3>Phase 3 — AI / Machine Learning (Intelligent Systems)</h3><span class="phase-tag">Advanced → Industrial · Deploy an intelligent decision-support system</span></div>
+<div class="phase-expand">▼</div>
+</div>
+<div class="phase-content">
+<p style="color:var(--mid-gray);margin-bottom:1rem;font-size:0.92rem"><strong>Objective:</strong> Architect and deploy production-grade ML models with cross-validation, hyperparameter optimization, explainability, fairness review, and a scalable deployment strategy — transforming predictions into an autonomous decision-support system.</p>
+<div class="phase-grid">
+<div class="task-card"><h4>🤖 Advanced ML Models</h4><p>Train <span class="tooltip-trigger">Random Forest<span class="tooltip-text">An ensemble method that builds multiple decision trees and merges their outputs for robust, low-variance predictions.</span></span>, <span class="tooltip-trigger">XGBoost<span class="tooltip-text">Extreme Gradient Boosting — a high-performance, regularized boosting algorithm widely used in production ML for tabular data.</span></span>, and feedforward Neural Networks. Benchmark against Phase 2 baselines to quantify improvement.</p><div class="task-tools"><span>XGBoost</span><span>TensorFlow</span><span>PyTorch</span></div></div>
+<div class="task-card"><h4>🔄 Cross-Validation & Hyperparameter Tuning</h4><p>Implement k-fold and time-series cross-validation. Use Grid Search, Random Search, and Bayesian Optimization (<span class="tooltip-trigger">Optuna<span class="tooltip-text">Optuna is an automatic hyperparameter optimization framework using Bayesian methods to efficiently search parameter spaces.</span></span>) for hyperparameter tuning.</p><div class="task-tools"><span>Scikit-learn</span><span>Optuna</span><span>Ray Tune</span></div></div>
+<div class="task-card"><h4>🔍 Model Explainability</h4><p>Apply <span class="tooltip-trigger">SHAP<span class="tooltip-text">SHAP (SHapley Additive exPlanations) uses game-theoretic Shapley values to assign each feature an importance score for individual predictions — enabling global and local interpretability.</span></span> values for global and local interpretability. Generate force plots, summary plots, and dependency plots. Ensure stakeholder-readable explanations for every prediction driver.</p><div class="task-tools"><span>SHAP</span><span>LIME</span><span>ELI5</span></div></div>
+<div class="task-card"><h4>🚀 Pipeline Automation & Deployment</h4><p>Build end-to-end ML pipelines with automated preprocessing, training, and inference. Design REST API endpoints or dashboard integration. Define CI/CD strategy for model updates.</p><div class="task-tools"><span>FastAPI</span><span>Docker</span><span>MLflow</span></div></div>
+<div class="task-card"><h4>⚖️ Bias Detection & Fairness Review</h4><p>Audit model predictions for demographic and geographic bias. Apply fairness metrics (equal opportunity, demographic parity). Document mitigation strategies and ethical considerations.</p><div class="task-tools"><span>Fairlearn</span><span>AIF360</span><span>Python</span></div></div>
+<div class="task-card"><h4>📡 Scalability & Monitoring Plan</h4><p>Design a monitoring dashboard for prediction drift, data drift, and model degradation. Define retraining triggers, alerting thresholds, and scaling architecture for 10x data growth.</p><div class="task-tools"><span>Evidently AI</span><span>Grafana</span><span>AWS/GCP</span></div></div>
+</div>
+<div class="checklist" data-phase="phase3">
+<h4>✅ Phase 3 Completion Checklist</h4>
+<div class="checklist-item" data-key="p3-ml"><div class="check-box">✓</div><span class="check-label">Advanced ML models trained & benchmarked</span></div>
+<div class="checklist-item" data-key="p3-cv"><div class="check-box">✓</div><span class="check-label">Cross-validation & hyperparameter tuning documented</span></div>
+<div class="checklist-item" data-key="p3-shap"><div class="check-box">✓</div><span class="check-label">SHAP / LIME explainability reports generated</span></div>
+<div class="checklist-item" data-key="p3-deploy"><div class="check-box">✓</div><span class="check-label">Deployment pipeline & API architecture finalized</span></div>
+<div class="checklist-item" data-key="p3-bias"><div class="check-box">✓</div><span class="check-label">Bias detection & fairness review completed</span></div>
+<div class="checklist-item" data-key="p3-monitor"><div class="check-box">✓</div><span class="check-label">Scalability & monitoring plan submitted</span></div>
+<div class="checklist-item" data-key="p3-exec"><div class="check-box">✓</div><span class="check-label">Executive AI strategy presentation delivered</span></div>
+<div class="checklist-progress"><div class="checklist-progress-bar"><div class="checklist-progress-fill" style="width:0%"></div></div><span class="checklist-progress-text">0%</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== DATASETS ===== -->
+<section id="datasets" style="background:var(--white)">
+<div class="section-inner scroll-reveal">
+<span class="section-label">Data Resources</span>
+<h2 class="section-title">Datasets & Access</h2>
+<p class="section-subtitle">Curated, industry-relevant datasets exceeding 100K rows — suitable for all three phases of this capstone.</p>
+
+<div class="dataset-card">
+<h3 style="font-size:1.15rem;margin-bottom:0.5rem">📦 Global Supply Chain Shipment Dataset</h3>
+<p style="color:var(--mid-gray);font-size:0.9rem">Comprehensive shipment-level records including product categories, supplier details, shipping modes, delivery performance, regional distribution, and cost metrics. Ideal for demand forecasting, logistics optimization, and risk analysis.</p>
+<div class="dataset-meta">
+<span>📊 180,000+ Rows</span><span>📁 CSV Format</span><span>🏷️ Open License</span><span>🏭 Logistics & Supply Chain</span>
+</div>
+<p style="font-size:0.82rem;color:var(--mid-gray);margin-top:0.5rem"><strong>Schema Highlights:</strong> order_id, product_category, supplier_id, ship_mode, shipping_cost, delivery_days, region, order_date, quantity, discount, profit_margin, customer_segment, warehouse_id</p>
+<div class="dataset-buttons">
+<button class="dataset-btn primary" onclick="openDataset('https://www.kaggle.com/datasets/shashwatwork/dataco-smart-supply-chain-for-big-data-analysis','ds1')" aria-label="Download primary dataset">
+<span class="link-status live" id="ds1-status"></span> Primary: Kaggle DataCo
+</button>
+<button class="dataset-btn fallback" onclick="openDataset('https://data.world/search?q=supply+chain','ds1-f1')" aria-label="Fallback link 1">
+<span class="link-status live" id="ds1-f1-status"></span> Fallback: Data.world
+</button>
+<button class="dataset-btn fallback" onclick="openDataset('https://archive.ics.uci.edu/ml/index.php','ds1-f2')" aria-label="Fallback link 2">
+<span class="link-status live" id="ds1-f2-status"></span> Fallback: UCI Repository
+</button>
+</div>
+</div>
+
+<div class="dataset-card">
+<h3 style="font-size:1.15rem;margin-bottom:0.5rem">🏭 Supply Chain Demand Forecasting Dataset</h3>
+<p style="color:var(--mid-gray);font-size:0.9rem">Historical demand records with temporal features, promotional indicators, inventory levels, and external factors. Optimized for time-series modeling, seasonal decomposition, and predictive analytics in manufacturing and retail supply chains.</p>
+<div class="dataset-meta">
+<span>📊 120,000+ Rows</span><span>📁 CSV Format</span><span>🏷️ Open License</span><span>🏭 Manufacturing & Retail</span>
+</div>
+<p style="font-size:0.82rem;color:var(--mid-gray);margin-top:0.5rem"><strong>Schema Highlights:</strong> date, product_id, warehouse, demand_units, inventory_level, promotion_flag, price, lead_time, supplier_score, region, category</p>
+<div class="dataset-buttons">
+<button class="dataset-btn primary" onclick="openDataset('https://www.kaggle.com/datasets/felixzhao/productdemandforecasting','ds2')" aria-label="Download demand dataset">
+<span class="link-status live" id="ds2-status"></span> Primary: Kaggle Demand Forecast
+</button>
+<button class="dataset-btn fallback" onclick="openDataset('https://www.kaggle.com/datasets','ds2-f1')" aria-label="Fallback link 1">
+<span class="link-status live" id="ds2-f1-status"></span> Fallback: Kaggle Search
+</button>
+<button class="dataset-btn fallback" onclick="openDataset('https://datasetsearch.research.google.com/','ds2-f2')" aria-label="Fallback link 2">
+<span class="link-status live" id="ds2-f2-status"></span> Fallback: Google Dataset Search
+</button>
+</div>
+</div>
+
+<div class="dataset-card">
+<h3 style="font-size:1.15rem;margin-bottom:0.5rem">🌍 Global Trade & Risk Intelligence Dataset</h3>
+<p style="color:var(--mid-gray);font-size:0.9rem">Multi-source dataset combining trade flow records, geopolitical risk indices, logistics disruption logs, and macroeconomic indicators. Designed for advanced ML-driven risk forecasting and network resilience analysis.</p>
+<div class="dataset-meta">
+<span>📊 250,000+ Rows</span><span>📁 CSV/JSON</span><span>🏷️ Mixed License</span><span>🌐 Global Trade</span>
+</div>
+<p style="font-size:0.82rem;color:var(--mid-gray);margin-top:0.5rem"><strong>Schema Highlights:</strong> trade_id, origin_country, dest_country, commodity, trade_value_usd, risk_index, disruption_type, transport_mode, lead_time, tariff_rate</p>
+<div class="dataset-buttons">
+<button class="dataset-btn primary" onclick="openDataset('https://comtrade.un.org/data/','ds3')" aria-label="Download trade dataset">
+<span class="link-status live" id="ds3-status"></span> Primary: UN Comtrade
+</button>
+<button class="dataset-btn fallback" onclick="openDataset('https://datacatalog.worldbank.org/','ds3-f1')" aria-label="Fallback link 1">
+<span class="link-status live" id="ds3-f1-status"></span> Fallback: World Bank Data
+</button>
+<button class="dataset-btn fallback" onclick="openDataset('https://www.imf.org/en/Data','ds3-f2')" aria-label="Fallback link 2">
+<span class="link-status live" id="ds3-f2-status"></span> Fallback: IMF Data
+</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== INDUSTRIAL DEMAND ===== -->
+<section id="demand">
+<div class="section-inner scroll-reveal">
+<span class="section-label">Market Intelligence</span>
+<h2 class="section-title">Why This Capstone Is in Massive Demand</h2>
+<p class="section-subtitle">Supply chain analytics and AI/ML skills are among the most sought-after capabilities across global enterprises.</p>
+<div class="demand-grid">
+<div class="demand-card">
+<div class="demand-icon">💰</div>
+<h4>Salary Benchmarks (India)</h4>
+<div class="salary-range">₹8L – ₹44L+</div>
+<p>Entry-level data scientists earn ₹8–12 LPA, mid-level professionals reach ₹15–25 LPA, and senior AI/ML engineers command ₹30–44 LPA+ in top-tier firms.</p>
+</div>
+<div class="demand-card">
+<div class="demand-icon">🏢</div>
+<h4>Industries Hiring</h4>
+<p style="text-align:left;padding-left:1rem"><strong>Manufacturing:</strong> Demand forecasting, predictive maintenance<br><strong>E-commerce:</strong> Inventory optimization, fulfillment<br><strong>FMCG:</strong> Distribution network optimization<br><strong>Pharmaceuticals:</strong> Cold chain monitoring<br><strong>Automotive:</strong> Just-in-time supply planning</p>
+</div>
+<div class="demand-card">
+<div class="demand-icon">📊</div>
+<h4>Consulting Applicability</h4>
+<p>McKinsey, Deloitte, BCG, and boutique analytics firms routinely deploy supply chain optimization engagements. This capstone mirrors real consulting deliverables from diagnostic assessment to AI deployment strategy.</p>
+</div>
+<div class="demand-card">
+<div class="demand-icon">🚀</div>
+<h4>Startup Ecosystem</h4>
+<p>Supply chain tech startups raised billions globally. Companies like FourKites, project44, and Coupa leverage AI for logistics intelligence — creating massive demand for this exact skill stack.</p>
+</div>
+<div class="demand-card">
+<div class="demand-icon">🔬</div>
+<h4>Research & Investment</h4>
+<p>AI-native supply chain platforms deliver 300%+ ROI by year three. Research in LSTM networks, graph neural networks, and reinforcement learning for supply optimization is accelerating in top journals.</p>
+</div>
+<div class="demand-card">
+<div class="demand-icon">🌐</div>
+<h4>Global Relevance</h4>
+<p>Post-pandemic supply chain resilience is a C-suite priority. Enterprises worldwide invest in predictive analytics to achieve 23–31% cost reductions and 40% improvement in delivery reliability.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== DELIVERABLES ===== -->
+<section id="deliverables" style="background:var(--white)">
+<div class="section-inner scroll-reveal">
+<span class="section-label">Submission Artifacts</span>
+<h2 class="section-title">Capstone Deliverables</h2>
+<p class="section-subtitle">Each deliverable must meet enterprise-grade acceptance criteria before sign-off.</p>
+<div class="deliverable-grid">
+<div class="deliverable-item"><h4>📊 Interactive Dashboard</h4><p>Power BI / Tableau / Streamlit dashboard with KPI views, drill-downs, and filter controls.</p><div class="acceptance"><span>✅ Acceptance: Minimum 5 interactive views, real-time filter capability, responsive layout, stakeholder walkthrough recorded.</span></div></div>
+<div class="deliverable-item"><h4>📓 Jupyter Notebooks</h4><p>Well-documented notebooks for EDA, statistical modeling, and ML experimentation with markdown explanations.</p><div class="acceptance"><span>✅ Acceptance: Reproducible end-to-end, all cells executable, clear markdown sections, version controlled.</span></div></div>
+<div class="deliverable-item"><h4>🤖 Trained ML Model</h4><p>Serialized model file (.pkl / .h5 / .onnx) with inference pipeline and preprocessing artifacts.</p><div class="acceptance"><span>✅ Acceptance: Model metrics exceed baseline by ≥15%, reproducible training script, documented hyperparameters.</span></div></div>
+<div class="deliverable-item"><h4>🚀 Deployment Architecture</h4><p>Architecture diagram with API design, containerization strategy, and monitoring integration plan.</p><div class="acceptance"><span>✅ Acceptance: Includes API spec (OpenAPI), Docker config, CI/CD pipeline definition, load testing plan.</span></div></div>
+<div class="deliverable-item"><h4>📝 README Documentation</h4><p>Comprehensive project documentation covering setup, data sources, methodology, results, and reproduction steps.</p><div class="acceptance"><span>✅ Acceptance: Setup instructions verified on clean environment, all dependencies listed, data access documented.</span></div></div>
+<div class="deliverable-item"><h4>🎬 Executive Presentation</h4><p>PPT/PDF executive summary with business context, methodology, findings, ROI projections, and recommendations.</p><div class="acceptance"><span>✅ Acceptance: ≤15 slides, C-suite friendly language, data-backed recommendations, 10-minute presentation script.</span></div></div>
+<div class="deliverable-item"><h4>🎥 Demo Video (Optional)</h4><p>3–5 minute walkthrough demonstrating the end-to-end pipeline from data ingestion to model prediction.</p><div class="acceptance"><span>✅ Acceptance: Screen recording with narration, covers all 3 phases, hosted on accessible platform.</span></div></div>
+<div class="deliverable-item"><h4>📂 GitHub Repository</h4><p>Version-controlled repository with proper branching, .gitignore, requirements.txt, and CI integration.</p><div class="acceptance"><span>✅ Acceptance: Clean commit history, branch-per-phase strategy, passing CI checks, LICENSE file included.</span></div></div>
+</div>
+<div class="github-tree" style="margin-top:2rem">
+<strong style="color:var(--teal);font-family:'Poppins',sans-serif">📂 Suggested Repository Structure</strong><br><br>
+<span class="folder">evoastra-supply-chain-capstone/</span><br>
+├── <span class="folder">data/</span><br>
+│ &nbsp;&nbsp; ├── <span class="file">raw/</span><br>
+│ &nbsp;&nbsp; ├── <span class="file">processed/</span><br>
+│ &nbsp;&nbsp; └── <span class="file">data_dictionary.md</span><br>
+├── <span class="folder">notebooks/</span><br>
+│ &nbsp;&nbsp; ├── <span class="file">01_eda_analytics.ipynb</span><br>
+│ &nbsp;&nbsp; ├── <span class="file">02_statistical_modeling.ipynb</span><br>
+│ &nbsp;&nbsp; └── <span class="file">03_ml_pipeline.ipynb</span><br>
+├── <span class="folder">src/</span><br>
+│ &nbsp;&nbsp; ├── <span class="file">preprocessing.py</span><br>
+│ &nbsp;&nbsp; ├── <span class="file">feature_engineering.py</span><br>
+│ &nbsp;&nbsp; ├── <span class="file">model_training.py</span><br>
+│ &nbsp;&nbsp; └── <span class="file">inference_api.py</span><br>
+├── <span class="folder">models/</span><br>
+│ &nbsp;&nbsp; └── <span class="file">best_model.pkl</span><br>
+├── <span class="folder">dashboards/</span><br>
+│ &nbsp;&nbsp; └── <span class="file">supply_chain_dashboard.pbix</span><br>
+├── <span class="folder">docs/</span><br>
+│ &nbsp;&nbsp; ├── <span class="file">architecture_diagram.png</span><br>
+│ &nbsp;&nbsp; ├── <span class="file">executive_presentation.pdf</span><br>
+│ &nbsp;&nbsp; └── <span class="file">ai_strategy_document.md</span><br>
+├── <span class="folder">deployment/</span><br>
+│ &nbsp;&nbsp; ├── <span class="file">Dockerfile</span><br>
+│ &nbsp;&nbsp; ├── <span class="file">docker-compose.yml</span><br>
+│ &nbsp;&nbsp; └── <span class="file">api_config.yaml</span><br>
+├── <span class="file">requirements.txt</span><br>
+├── <span class="file">README.md</span><br>
+├── <span class="file">.gitignore</span><br>
+└── <span class="file">LICENSE</span>
+</div>
+</div>
+</section>
+
+<!-- ===== GRADING RUBRIC ===== -->
+<section id="rubric">
+<div class="section-inner scroll-reveal">
+<span class="section-label">Evaluation Framework</span>
+<h2 class="section-title">Capstone Grading Rubric</h2>
+<p class="section-subtitle">Weighted assessment matrix aligned with enterprise consulting evaluation standards.</p>
+<table class="rubric-table" aria-label="Grading Rubric">
+<thead><tr><th>Category</th><th>Weight</th><th>Evaluation Criteria</th></tr></thead>
+<tbody>
+<tr><td><strong>Analytics Quality</strong></td><td><span class="weight-badge">20%</span></td><td>Depth of EDA, KPI relevance, dashboard interactivity, visual clarity, root cause rigor. Dashboards must support real-time drill-down and stakeholder storytelling.</td></tr>
+<tr><td><strong>Modeling Accuracy</strong></td><td><span class="weight-badge">20%</span></td><td>Statistical rigor of hypothesis tests, forecast accuracy (RMSE/MAE benchmarks), model selection rationale, cross-validation methodology, and improvement over baselines.</td></tr>
+<tr><td><strong>ML Complexity</strong></td><td><span class="weight-badge">20%</span></td><td>Sophistication of algorithms deployed, hyperparameter optimization strategy, pipeline automation, ensemble methods, and neural network architecture where appropriate.</td></tr>
+<tr><td><strong>Business Insight</strong></td><td><span class="weight-badge">15%</span></td><td>Ability to translate data findings into actionable business recommendations. Risk quantification, scenario analysis, ROI projections, and stakeholder communication quality.</td></tr>
+<tr><td><strong>Documentation</strong></td><td><span class="weight-badge">10%</span></td><td>Completeness of README, data dictionary, methodology explanation, architecture diagrams, and executive presentation. Reproducibility of all artifacts.</td></tr>
+<tr><td><strong>Code Quality</strong></td><td><span class="weight-badge">10%</span></td><td>Clean, modular, PEP-8 compliant Python code. Proper use of functions/classes, error handling, logging, type hints, and version control practices.</td></tr>
+<tr><td><strong>Innovation</strong></td><td><span class="weight-badge">5%</span></td><td>Novel approaches to problem-solving, creative feature engineering, unique visualization techniques, MLOps integration, or deployment beyond minimum requirements.</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- ===== ADVANCED FEATURES ===== -->
+<section id="advanced" style="background:var(--white)">
+<div class="section-inner scroll-reveal">
+<span class="section-label">Beyond the Capstone</span>
+<h2 class="section-title">Advanced Extensions & MLOps Readiness</h2>
+<p class="section-subtitle">Differentiate your capstone with these enterprise-grade extensions aligned with production ML best practices.</p>
+<div class="advanced-grid">
+<div class="task-card"><h4>📉 Model Drift Detection</h4><p>Implement statistical drift monitoring using PSI (Population Stability Index) and KS tests. Design automated alerts when prediction distributions shift beyond defined thresholds, triggering retraining workflows.</p></div>
+<div class="task-card"><h4>🧪 A/B Testing Strategy</h4><p>Design an experimentation framework to compare model versions in production. Define traffic splitting, success metrics, statistical significance thresholds, and rollback procedures for safe model deployment.</p></div>
+<div class="task-card"><h4>⚙️ MLOps Roadmap</h4><p>Map the transition from notebook experimentation to production ML: CI/CD for models, feature stores, model registries (MLflow), automated retraining, and infrastructure-as-code with Docker & Kubernetes.</p></div>
+<div class="task-card"><h4>🛡️ Data Governance Framework</h4><p>Establish data lineage tracking, access control policies, PII handling procedures, and compliance frameworks (GDPR/DPDP Act). Document data quality SLAs and stewardship responsibilities.</p></div>
+<div class="task-card"><h4>⚖️ Risk & Ethics Review</h4><p>Conduct ethical impact assessment for AI predictions influencing supplier selection, pricing, and resource allocation. Address algorithmic fairness, transparency obligations, and human-in-the-loop governance.</p></div>
+<div class="task-card"><h4>📈 Scalability Architecture</h4><p>Design for 10x–100x data growth: distributed computing (Spark), cloud-native deployment (AWS SageMaker / GCP Vertex AI), auto-scaling inference endpoints, and cost optimization strategies.</p></div>
+</div>
+</div>
+</section>
+
+<!-- ===== FAQ ACCORDION ===== -->
+<section id="faq">
+<div class="section-inner scroll-reveal">
+<span class="section-label">Common Questions</span>
+<h2 class="section-title">Frequently Asked Questions</h2>
+<div class="accordion">
+<div class="accordion-item">
+<div class="accordion-header" onclick="toggleAccordion(this)" role="button" tabindex="0" aria-expanded="false"><span>What prior experience is needed for this capstone?</span><span class="accordion-icon">+</span></div>
+<div class="accordion-body"><p>Phase 1 is accessible to beginners with basic Python and Excel skills. Phase 2 requires intermediate statistics and modeling knowledge. Phase 3 demands familiarity with ML frameworks (scikit-learn, XGBoost) and deployment concepts. The progressive structure ensures guided growth.</p></div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header" onclick="toggleAccordion(this)" role="button" tabindex="0" aria-expanded="false"><span>Can I use different datasets than those recommended?</span><span class="accordion-icon">+</span></div>
+<div class="accordion-body"><p>Yes, provided your dataset exceeds 100K rows, relates to supply chain or logistics operations, and supports all three phases (descriptive, predictive, and ML). Document your dataset selection rationale in the README.</p></div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header" onclick="toggleAccordion(this)" role="button" tabindex="0" aria-expanded="false"><span>How long should each phase take to complete?</span><span class="accordion-icon">+</span></div>
+<div class="accordion-body"><p>Estimated timelines: Phase 1 (2–3 weeks), Phase 2 (3–4 weeks), Phase 3 (4–5 weeks). Total program duration is approximately 10–12 weeks. Timelines may vary based on individual pace and depth of exploration.</p></div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header" onclick="toggleAccordion(this)" role="button" tabindex="0" aria-expanded="false"><span>Is deployment to production required?</span><span class="accordion-icon">+</span></div>
+<div class="accordion-body"><p>Full cloud deployment is encouraged but not mandatory. At minimum, you must deliver a deployment architecture diagram, API specification, Docker configuration, and a local inference demo. Production deployment earns bonus marks under Innovation.</p></div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header" onclick="toggleAccordion(this)" role="button" tabindex="0" aria-expanded="false"><span>How does this capstone align with Evoastra's services?</span><span class="accordion-icon">+</span></div>
+<div class="accordion-body"><p>This project mirrors Evoastra Ventures' advisory and research methodology — moving from market intelligence (analytics) through competitive forecasting (data science) to AI-driven decision systems. It reflects real consulting engagements in supply chain transformation.</p></div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header" onclick="toggleAccordion(this)" role="button" tabindex="0" aria-expanded="false"><span>What tools are mandatory vs. optional?</span><span class="accordion-icon">+</span></div>
+<div class="accordion-body"><p>Mandatory: Python (Pandas, scikit-learn), Jupyter Notebooks, at least one visualization tool (Power BI / Tableau / Streamlit). Optional but recommended: Docker, FastAPI, MLflow, SHAP, cloud platforms (AWS/GCP). Tool choices should be justified in documentation.</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+<div class="footer-inner">
+<div class="footer-col">
+<h4>Evoastra Ventures (OPC) Pvt Ltd</h4>
+<p>"Your Extended Partner in Advisory Research & Analytics Excellence"</p>
+<p style="margin-top:1rem">Market Research | Competitive Intelligence | Data Science | AI Innovation</p>
+</div>
+<div class="footer-col">
+<h4>Quick Links</h4>
+<a href="#overview" style="display:block">Program Overview</a>
+<a href="#phases" style="display:block">Phase Details</a>
+<a href="#datasets" style="display:block">Datasets</a>
+<a href="#deliverables" style="display:block">Deliverables</a>
+<a href="#rubric" style="display:block">Grading Rubric</a>
+</div>
+<div class="footer-col">
+<h4>Contact</h4>
+<p>📧 contact@evoastra.com</p>
+<p>🌐 <a href="https://evoastra.com" target="_blank" rel="noopener">evoastra.com</a></p>
+<p>📍 India</p>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2026 Evoastra Ventures (OPC) Pvt Ltd. All rights reserved.</p>
+<div class="footer-social">
+<a href="https://linkedin.com/company/evoastra" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+<a href="https://evoastra.com" target="_blank" rel="noopener" aria-label="Website">🌐</a>
+</div>
+</div>
+</footer>
+
+<!-- ===== MODAL ===== -->
+<div class="modal-overlay" id="formulaModal">
+<div class="modal" style="position:relative">
+<button class="modal-close" onclick="closeModal()" aria-label="Close Modal">✕</button>
+<h3 id="modalTitle">Formula Explanation</h3>
+<div id="modalBody"><p>Loading...</p></div>
+</div>
+</div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+/* ===== NAVBAR SCROLL & TOGGLE ===== */
+const navbar=document.querySelector('.navbar');
+const navToggle=document.getElementById('navToggle');
+const navLinks=document.getElementById('navLinks');
+window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>50);revealOnScroll()});
+navToggle.addEventListener('click',()=>navLinks.classList.toggle('open'));
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+
+/* ===== SCROLL REVEAL ===== */
+function revealOnScroll(){document.querySelectorAll('.scroll-reveal').forEach(el=>{const top=el.getBoundingClientRect().top;if(top<window.innerHeight-80)el.classList.add('visible')})}
+window.addEventListener('load',()=>{revealOnScroll();animateProgressBar();animateSkillMeter();loadChecklists()});
+
+/* ===== PROGRESS BAR ANIMATION ===== */
+function animateProgressBar(){const fill=document.getElementById('progressFill');if(fill)setTimeout(()=>fill.style.width='50%',500)}
+function animateSkillMeter(){const fill=document.getElementById('skillFill');if(fill)setTimeout(()=>fill.style.width='55%',800)}
+
+/* ===== PHASE EXPAND/COLLAPSE ===== */
+function togglePhase(header){
+const content=header.nextElementSibling;
+const isOpen=content.classList.contains('open');
+document.querySelectorAll('.phase-content').forEach(c=>c.classList.remove('open'));
+document.querySelectorAll('.phase-header').forEach(h=>{h.classList.remove('open');h.setAttribute('aria-expanded','false')});
+if(!isOpen){content.classList.add('open');header.classList.add('open');header.setAttribute('aria-expanded','true')}
+}
+
+/* ===== ACCORDION ===== */
+function toggleAccordion(header){
+const item=header.parentElement;
+const isOpen=item.classList.contains('open');
+document.querySelectorAll('.accordion-item').forEach(i=>i.classList.remove('open'));
+if(!isOpen)item.classList.add('open');
+header.setAttribute('aria-expanded',!isOpen);
+}
+
+/* ===== CHECKLIST WITH LOCALSTORAGE ===== */
+function loadChecklists(){
+document.querySelectorAll('.checklist-item').forEach(item=>{
+const key=item.getAttribute('data-key');
+if(localStorage.getItem('evo-check-'+key)==='true'){item.classList.add('checked')}
+item.addEventListener('click',()=>{
+item.classList.toggle('checked');
+localStorage.setItem('evo-check-'+key,item.classList.contains('checked'));
+updateChecklistProgress(item.closest('.checklist'));
+});
+});
+document.querySelectorAll('.checklist').forEach(cl=>updateChecklistProgress(cl));
+}
+function updateChecklistProgress(checklist){
+if(!checklist)return;
+const items=checklist.querySelectorAll('.checklist-item');
+const checked=checklist.querySelectorAll('.checklist-item.checked');
+const pct=items.length?Math.round((checked.length/items.length)*100):0;
+const fill=checklist.querySelector('.checklist-progress-fill');
+const text=checklist.querySelector('.checklist-progress-text');
+if(fill)fill.style.width=pct+'%';
+if(text)text.textContent=pct+'%';
+}
+
+/* ===== DATASET LINK OPENER WITH FALLBACK ===== */
+function openDataset(url,id){
+const w=window.open(url,'_blank');
+if(!w||w.closed){
+const card=document.getElementById(id+'-status');
+if(card){card.classList.remove('live');card.classList.add('dead')}
+const parent=document.querySelector('[onclick*="'+id+'"]').closest('.dataset-buttons');
+if(parent){
+const fallbacks=parent.querySelectorAll('.fallback');
+if(fallbacks.length>0){alert('Primary link may be blocked. Trying fallback...');fallbacks[0].click()}
+}
+}
+}
+
+/* ===== LINK HEALTH CHECK ===== */
+function checkLinks(){
+document.querySelectorAll('.dataset-btn').forEach(btn=>{
+const onclickAttr=btn.getAttribute('onclick');
+if(onclickAttr){
+const match=onclickAttr.match(/openDataset\('([^']+)'/);
+if(match){
+const url=match[1];
+const idMatch=onclickAttr.match(/'([^']+)'\)/);
+if(idMatch){
+const statusId=idMatch[1]+'-status';
+const statusEl=document.getElementById(statusId);
+fetch(url,{method:'HEAD',mode:'no-cors'}).then(()=>{
+if(statusEl){statusEl.classList.add('live');statusEl.classList.remove('dead')}
+}).catch(()=>{
+if(statusEl){statusEl.classList.remove('live');statusEl.classList.add('dead')}
+});
+}
+}
+}
+});
+}
+setTimeout(checkLinks,2000);
+
+/* ===== MODAL ===== */
+function openModal(title,body){
+document.getElementById('modalTitle').textContent=title;
+document.getElementById('modalBody').innerHTML=body;
+document.getElementById('formulaModal').classList.add('open');
+document.body.style.overflow='hidden';
+}
+function closeModal(){
+document.getElementById('formulaModal').classList.remove('open');
+document.body.style.overflow='';
+}
+document.getElementById('formulaModal').addEventListener('click',function(e){if(e.target===this)closeModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+/* ===== ACTIVE NAV LINK ===== */
+const sections=document.querySelectorAll('section[id]');
+window.addEventListener('scroll',()=>{
+let current='';
+sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)current=s.getAttribute('id')});
+document.querySelectorAll('.nav-links a').forEach(a=>{
+a.classList.remove('active');
+if(a.getAttribute('href')==='#'+current)a.classList.add('active');
+});
+});
+
+/* ===== PROGRESS STEP CLICK ===== */
+document.querySelectorAll('.progress-step').forEach(step=>{
+step.style.cursor='pointer';
+step.addEventListener('click',()=>{
+const phase=step.getAttribute('data-phase');
+const fill=document.getElementById('progressFill');
+const skill=document.getElementById('skillFill');
+document.querySelectorAll('.progress-step').forEach(s=>s.classList.remove('active','completed'));
+if(phase==='1'){fill.style.width='16%';skill.style.width='25%';step.classList.add('active')}
+else if(phase==='2'){document.querySelector('[data-phase="1"]').classList.add('completed');step.classList.add('active');fill.style.width='50%';skill.style.width='55%'}
+else if(phase==='3'){document.querySelector('[data-phase="1"]').classList.add('completed');document.querySelector('[data-phase="2"]').classList.add('completed');step.classList.add('active');fill.style.width='84%';skill.style.width='90%'}
+});
+});
+</script>
+</body>
+</html>

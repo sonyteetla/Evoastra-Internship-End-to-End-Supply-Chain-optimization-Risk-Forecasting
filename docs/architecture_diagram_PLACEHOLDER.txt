@@ -1,0 +1,2 @@
+Create your deployment architecture diagram and save as PNG here.
+Recommended tools: draw.io, Lucidchart, Excalidraw.
