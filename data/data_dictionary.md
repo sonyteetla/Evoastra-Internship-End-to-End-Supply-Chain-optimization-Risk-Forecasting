@@ -1,17 +1,54 @@
-# Data Dictionary
-
-| Column | Type | Description |
-|--------|------|-------------|
-| order_id | str | Unique order identifier |
-| product_category | str | Product classification |
-| supplier_id | str | Supplier reference |
-| ship_mode | str | Shipping method |
-| shipping_cost | float | Cost in USD |
-| delivery_days | int | Days to deliver |
-| region | str | Geographic region |
-| order_date | date | Date of order |
-| quantity | int | Units ordered |
-| discount | float | Applied discount |
-| profit_margin | float | Profit percentage |
-| customer_segment | str | Customer type |
-| warehouse_id | str | Fulfillment center |
+| Column Name                      | Description                                   | Data Type | Example Value  | Allowed Values                 | Importance | Notes                           |  |
+| -------------------------------- | --------------------------------------------- | --------- | -------------- | ------------------------------ | ---------- | ------------------------------- |  |
+|  'Type'                          | Type of transaction/order record              | String    | Debit          | Debit.Transfer                 | Low        | Metadata                        |  |
+|  'Days for shipping (real)'      | Actual number of days taken to ship the order | Integer   | 4              | Numeric                        | High       | Used To Analyze Delivery Delay  |  |
+|  'Days for shipment (scheduled)' | Actual number of days taken to ship the order | Integer   | 3              | Numeric                        | High       | Compare With Real Shipping Days |
+|  'Benefit per order'             | Profit generated from the order               | Float     | 23.5           | Numeric                        | High       | Business Metric                 |  |
+|  'Sales per customer'            | Total revenue generated from a customer       | Float     | 250.75         | Numeric                        | Medium     | Customer Revenue Indicator      |  |
+|  'Delivery Status'               | Final delivery outcome                        | String    | Delivered      | Delivered,Shipped,Cancelled    | High       | Target Variable Candidate       |  |
+|  'Late_delivery_risk'            | Indicates risk of late delivery               | Integer   | 1              | 0.1                            | High       | Binary Features                 |  |
+|  'Category Id'                   | Identifier of product category                | Integer   | 17             | Numerical                      | Low        | Identifier                      |  |
+|  'Category Name'                 | Name of the product category                  | String    | Electronics    | Categorical                    | Medium     | Product Grouping                |  |
+|  'Customer City'                 | City where customer lives                     | String    | Mumbai         | Cities                         | Medium     | Geographic Features             |  |
+|  'Customer Country'              | Country of customer                           | String    | India          | Countries                      | Mediam     | Market Analysis                 |  |
+|  'Customer Email'                | Email address of customer                     |           |                | Email-Format                   | Low        | Sensitive Data                  |  |
+|  'Customer Fname'                | Customer first name                           | String    | John           | Names                          | Low        | Personol Data                   |  |
+|  'Customer Id'                   | Unique identifier of customer                 | Integer   | 12567          | Numeric                        | Low        | Identifier                      |  |
+|  'Customer Lname'                | Customer last name                            | String    | Doe            | Names                          | Low        | Personal Data                   |  |
+|  'Customer Password'             | Password field (masked)                       | String    | \*\*\*\*\*     | Text                           | Low        | Sensitive-Remove For Modeling   |  |
+|  'Customer Segment'              | Customer classification                       | String    | Consumer       | Consumer,Corporate,Home Office | High       | Important Features              |  |
+|  'Customer State'                | state where order occurred                    | String    | Maharashtra    | States                         | Medium     | Geographic                      |  |
+|  'Customer Street'               | Customer street address                       | String    | Mg Road        | Text                           | Low        | Personal Data                   |  |
+|  'Customer Zipcode'              | Postal code                                   | Integer   | 400001         | Numeric                        | Medium     | Loacation Features              |  |
+|  'Department Id'                 | Identifier for department                     | Integer   | 5              | Numeric                        | Low        | Metadata                        |  |
+|  'Department Name'               | Department name                               | String    | Technology     | Categorical                    | Medium     | Product Grouping                |  |
+|  'Latitude'                      | Geographic latitude coordinate                | Float     | 19.076         | Numeriacl                      | Medium     | Location Analysis               |  |
+|  'Longitude'                     | Geographic longitude coordinate               | Float     | 72.877         | Numerical                      | Medium     | Location Analysis               |  |
+|  'Market'                        | Market region of transaction                  | String    | Asia           | Region                         | Medium     | Market Segmentation             |  |
+|  'Order City'                    | City where order was placed                   | String    | Banglore       | Cities                         | Medium     | Geographic Features             |  |
+|  'Order Country'                 | Country where order originated                | String    | India          | Countries                      | Medium     | Market Analysis                 |  |
+|  'Order Customer Id'             | Customer ID associated with order             | Integer   | 12567          | Numeric                        | Low        | Foreign Key                     |  |
+|  'order date (DateOrders)'       | Date when order was placed                    | Date      | 43835          | Date                           | High       | Time Series Analysis            |  |
+|  'Order Id'                      | Unique identifier for order                   | Integer   | 98765          | Numeric                        | Low        | Primary Key                     |  |
+|  'Order Item Cardprod Id'        | Product card identifier for item              | Integer   | 345            | Numeric                        | Low        | Product Reference               |  |
+|  'Order Item Discount'           | discount amount applied                       | Float     | 10.5           | Numeric                        | Medium     | Pricing Analysis                |  |
+|  'Order Item Discount Rate'      | percentage discount applied                   | Float     | 0.15           | Numeric                        | Medium     | Pricing Features                |  |
+|  'Order Item Id'                 | identifier for each order item                | Integer   | 5001           | Numeric                        | Low        | Unique Identifier               |  |
+|  'Order Item Product Price'      | price of product per item                     | Float     | 299.99         | Numeric                        | High       | Revenue Driver                  |  |
+|  'Order Item Profit Ratio'       | profit ratio of item                          | Float     | 0.25           | Numeric                        | High       | Profit Analysis                 |  |
+|  'Order Item Quantity'           | quantity of item ordered                      | Integer   | 2              | Numeric                        | High       | Sales Volume                    |  |
+|  'Sales'                         | total sales value                             | Float     | 599.98         | Numeric                        | High       | Key Business Metric             |  |
+|  'Order Item Total'              | total price for order item                    | Float     | 589.98         | Numeric                        | High       | Revenue Calculation             |  |
+|  'Order Profit Per Order'        | total profit per order                        | Float     | 45.5           | Numeric                        | High       | Business Kpi                    |  |
+|  'Order Region'                  | region where order occurred                   | String    | South Asia     | Region                         | Medium     | Geographic Grouping             |  |
+|  'Order State'                   | state where order occurred                    | String    | Karnataka      | States                         | Medium     | Geographic                      |  |
+|  'Order Status'                  | current order status                          | String    | Completed      | Completed,Pending,Cancelled    | High       | Target Variable Candidate       |  |
+|  'Product Card Id'               | identifier for product card                   | Integer   | 234            | Numeric                        | Low        | Product Reference               |  |
+|  'Product Category Id'           | product category identifier                   | Integer   | 12             | Numeric                        | Medium     | Product Grouping                |  |
+|  'Product Image'                 | url for product image                         | String    | Image_Url      | Url                            | Low        | Media Reference                 |  |
+|  'Product Name'                  | Name of the product category                  | String    | Nike Shoes     | Text                           | Medium     | Product Feature                 |  |
+|  'Product Price'                 | price of product per item                     | Float     | 120.5          | Numeric                        | High       | Sales Analysis                  |  |
+|  'Product Status'                | availabilty status                            | Integer   | 1              | 0.1                            | Low        | Inventory Indicator             |  |
+|  'shipping date (DateOrders)'    | date when product was shipped                 | Date      | 43837          | Date                           | High       | Shipping Analysis               |  |
+|  'Shipping Mode']                | shpping methos used                           | String    | Standard Class | Standard, Express              | Medium     | Logistic Analysis               |  |
+|                                  |                                               |           |                |                                |            |                                 |  |
