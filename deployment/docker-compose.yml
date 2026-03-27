@@ -1,10 +1,18 @@
-version: "3.8"
+version: "3.9"
+
 services:
-  api:
-    build: .
+  ml_api:
+    build:
+      context: ..
+      dockerfile: deployment/Dockerfile
+
+    container_name: evoastra_team_E_api
+
     ports:
       - "8000:8000"
+
     volumes:
-      - ./models:/app/models
-    environment:
-      - MODEL_PATH=/app/models/best_model.pkl
+      - ../models:/app/models
+      - ../data:/app/data
+
+    restart: always

@@ -1,0 +1,5 @@
+notebooks
+docs
+.git
+__pycache__
+*.ipynb

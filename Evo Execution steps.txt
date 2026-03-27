@@ -21,3 +21,21 @@ pip install openpyxl
 Advanced_Models :
 
 pip install xgboost
+
+pip install optuna
+
+pip install shap lime eli5
+
+
+biastest_Evoastra :
+
+
+pip install fairlearn
+
+
+
+
+execution in CMD :
+
+
+python main_pipeline.py
